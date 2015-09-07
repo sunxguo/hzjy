@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>{dede:global.cfg_webname/}</title>
+<meta name="description" content="{dede:global.cfg_description/}" />
+<meta name="keywords" content="{dede:global.cfg_keywords/}" />
+<link href="{dede:global.cfg_templets_skin/}/style/weim.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="home">
+{dede:include filename="head.htm"/}
+<div class="sp">
+<div class="spz">
+<div class="flash">
+<script language='javascript'>
+linkarr = new Array();
+picarr = new Array();
+textarr = new Array();
+var swf_width=430;
+var swf_height=260;
+//文字颜色|文字位置|文字背景颜色|文字背景透明度|按键文字颜色|按键默认颜色|按键当前颜色|自动播放时间|图片过渡效果|是否显示按钮|打开方式
+var configtg='0xffffff|130|0x44c1c1|20|0xffffff|0x44c1c1|0x000000|5|3|1|_blank';
+var files = "";
+var links = "";
+var texts = "";
+//这里设置调用标记
+{dede:arclist flag='f' row='5'}
+linkarr[[field:global.autoindex/]] = "[field:arcurl/]";
+picarr[[field:global.autoindex/]]  = "[field:litpic/]";
+textarr[[field:global.autoindex/]] = "[field:title function='html2text(@me)'/]";
+{/dede:arclist}
+for(i=1;i<picarr.length;i++){
+if(files=="") files = picarr[i];
+else files += "|"+picarr[i];
+}
+for(i=1;i<linkarr.length;i++){
+if(links=="") links = linkarr[i];
+else links += "|"+linkarr[i];
+}
+for(i=1;i<textarr.length;i++){
+if(texts=="") texts = textarr[i];
+else texts += "|"+textarr[i];
+}
+document.write('<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="'+ swf_width +'" height="'+ swf_height +'">');
+document.write('<param name="movie" value="{dede:global.cfg_templeturl /}/default/images/bcastr3.swf"><param name="quality" value="high">');
+document.write('<param name="menu" value="false"><param name=wmode value="opaque">');
+document.write('<param name="FlashVars" value="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&bcastr_config='+configtg+'">');
+document.write('<embed src="{dede:global.cfg_templeturl /}/default/images/bcastr3.swf" wmode="opaque" FlashVars="bcastr_file='+files+'&bcastr_link='+links+'&bcastr_title='+texts+'&bcastr_config='+configtg+'&menu="false" quality="high" width="'+ swf_width +'" height="'+ swf_height +'" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />'); document.write('</object>');
+</script>
+</div>
+<div class="fly">
+<ul>
+<dl>精彩推荐</dl>
+{dede:arclist  row=4 titlelen=30 orderby='pubdate' }
+<li><a href='[field:arcurl/]'>[field:title/]</a></li>
+{/dede:arclist}
+<p>继续阅读</p>
+{dede:arclist  row=5 titlelen=30  orderby='pubdate' }
+<li><a href='[field:arcurl/]'>[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+</div>
+<div class="spy">
+<dl>分享给好友！</dl>
+<ul>
+<p><!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_b" style="line-height: 12px;">
+<img src="http://bdimg.share.baidu.com/static/images/type-button-5.jpg?cdnversion=20120831" />
+<a class="shareCount"></a>
+</div>
+<script type="text/javascript" id="bdshare_js" data="type=button&uid=14477" ></script>
+<script type="text/javascript" id="bdshell_js"></script>
+<script type="text/javascript">
+document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+</script>
+<!-- Baidu Button END --></p>
+
+     <li>  <iframe src="http://follow.v.t.qq.com/index.php?c=follow&a=quick&name=biscuit&style=5&t=1371363735307&f=1" frameborder="0" scrolling="auto" width="146" height="24" marginwidth="0" marginheight="0" allowtransparency="true"></iframe></li>
+<p><img src="{dede:global.cfg_templets_skin/}/images/2wei.gif" width="200" height="144" /></p>
+</ul>
+</div>
+</div>
+<div class="zw">
+<div class="zwz">
+{dede:arclist  row=1 titlelen=40 flag ='p' orderby='pubdate' }
+<h2><a href='[field:arcurl/]'>[field:title/]</a></h2>
+<p>[field:info/]<span><a href="[field:arcurl/]">完整阅读...</a></span></p>
+{/dede:arclist}
+<div class="zwwz">
+<ul>
+{dede:arclist  row=8 titlelen=36  orderby='pubdate' }
+<li><span>[ [field:typelink/] ]</span><a href="[field:arcurl/]">[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+</div>
+<div class="tuzs">
+<dl>推荐美图....</dl>
+
+<ul>
+ {dede:arclist row=8 titlelen=24 orderby='pubdate' }
+  <li><a href="[field:arcurl/]"><img src="[field:picname/]"  /><p>[field:title/]</p></a></li>
+{/dede:arclist}
+
+  
+</ul>
+</div>
+</div>
+<div class="zby">
+<div class="zwy">
+<dl>本周热门排行....</dl>
+<ul>
+{dede:arclist  row=9 titlelen=32 subday=7 orderby='click' }
+<li><span>[field:global name=autoindex/]</span><a href="[field:arcurl/]">[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+<div class="zbq">
+<dl>热门标签...</dl>
+<ul>
+{dede:tag row='30' getall='1' sort='hot'}
+<a href="[field:link/]" title="[field:tag /]([field:total /])" style="[field:total runphp=yes]@me=getTagStyle();[/field:total]">[field:tag /]</a>
+{/dede:tag} 
+</ul>
+</div>
+</div>
+<div class="fenl">
+<div class="fenzu">
+<h3>推荐分组...</h3>
+<div class="tabs">
+<span>推荐类型:</span>
+<a href="#" class="tagc4">静态连接</a>
+<a href="#" class="tagc4">静态连接</a>
+<a href="#" class="tagc3">静态连接</a>
+<a href="#" class="tagc3">静态连接</a>
+
+</div>  
+</div>
+<div class="mod-c">
+				<div class="pic left">
+					<a href="#"><img src="{dede:global.cfg_templets_skin/}/images/m1.jpg" border="0" width="75" height="75" alt="20条超经典搞笑句子，可谓高端大气上档次~"></a>
+
+				</div>
+				<div class="info left">
+				<div class="d1">
+					<h3><a href="/yulu/">语录</a></h3><span>- 给力推荐！</span>
+				</div>
+				<div class="d2">
+{dede:channel type='son' typeid ='1'}
+<a href='[field:typelink/]'>[field:typename/]</a> 
+{/dede:channel}
+</div>
+				</div>		
+				
+		 </div>
+         <div class="mod-c">
+				<div class="pic left">
+					<a href="#"><img src="{dede:global.cfg_templets_skin/}/images/m2.jpg" border="0" width="75" height="75" alt="20条超经典搞笑句子，可谓高端大气上档次~"></a>
+
+				</div>
+				<div class="info left">
+				<div class="d1">
+					<h3><a href="/yulu/">句子</a></h3><span>- 给力推荐！</span>
+				</div>
+				<div class="d2">
+{dede:channel type='son' typeid ='2'}
+<a href='[field:typelink/]'>[field:typename/]</a> 
+{/dede:channel}
+</div>
+				</div>		
+				
+		 </div>
+         <div class="mod-c">
+				<div class="pic left">
+					<a href="#"><img src="{dede:global.cfg_templets_skin/}/images/m3.jpg" border="0" width="75" height="75" alt="20条超经典搞笑句子，可谓高端大气上档次~"></a>
+
+				</div>
+				<div class="info left">
+				<div class="d1">
+					<h3><a href="/yulu/">名言</a></h3><span>- 给力推荐！</span>
+				</div>
+				<div class="d2">{dede:channel type='son' typeid ='3'}
+<a href='[field:typelink/]'>[field:typename/]</a> 
+{/dede:channel}</div>
+				</div>		
+				
+		 </div>
+</div>
+<div class="jdyl">
+<div class="fenzu">
+<h3>推荐语录...</h3>
+<div class="tabs">
+<span>推荐类型:</span>
+{dede:channel type='son' }
+<a href='[field:typelink/]'>[field:typename/]</a> 
+{/dede:channel}
+</div>  
+</div>
+<div class="ylks">
+<ul>
+{dede:arclist row=14 titlelen=36 orderby='pubdate' }
+<li><p>[field:pubdate function=MyDate('m-d',@me)/]</p><span>[[field:typelink/]]</span><a href="[field:arcurl/]">[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+</div>
+<div class="jdyl">
+<div class="fenzu">
+<h3>推荐语录...</h3>
+<div class="tabs">
+<span>推荐类型:</span>
+{dede:channel type='son' }
+<a href='[field:typelink/]'>[field:typename/]</a> 
+{/dede:channel}
+</div>  
+</div>
+<div class="ylks">
+<ul>
+{dede:arclist row=14 titlelen=36 orderby='pubdate' }
+<li><p>[field:pubdate function=MyDate('m-d',@me)/]</p><span>[[field:typelink/]]</span><a href="[field:arcurl/]">[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+</div>
+<div class="fzrm">
+<dl>热门分组...</dl>
+<ul>
+<li>
+{dede:channelartlist typeid='top'}
+<a href="{dede:field name='typeurl'/}">{dede:field name='typename'/}</a>
+{dede:channel type='son' noself='yes'}<a href="[field:typelink/]">[field:typename/]</a>{/dede:channel}
+{/dede:channelartlist}
+</li>
+</ul>
+</div>
+<div class="youl">
+<dl>友情连接...</dl>
+<ul>
+{dede:flink row='24'/}
+</ul>
+</div>
+</div>
+{dede:include filename="footer.htm"/}
+</body>
+</html>

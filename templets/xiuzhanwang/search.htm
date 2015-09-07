@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>搜索页</title>
+<link href="{dede:global.cfg_templets_skin/}/style/weim.css" rel="stylesheet" type="text/css" />
+<script src="{dede:global.cfg_templets_skin/}/js/jquery.min.1.7.1.js" type=text/javascript></script>
+<script type="text/javascript">
+function setTab(m,n){
+var menu=document.getElementById("tab"+m).getElementsByTagName("li");  
+var showdiv=document.getElementById("tablist"+m).getElementsByTagName("div");  
+for(i=0;i<menu.length;i++)
+{
+   menu[i].className=i==n?"nob":""; 
+   showdiv[i].style.display=i==n?"block":"none"; 
+}
+}
+</script>
+
+</head>
+
+<body>
+<div class="home">
+{dede:include filename="head.htm"/}
+<div class="dangq">
+<p>当前位置：{dede:field name='position'/}</p>
+</div>
+<div class="listz">
+
+<div class="liszw">
+<ul>
+{dede:list pagesize='10'}
+<li><span>[field:pubdate function="GetDateTimeMK(@me)"/]</span><a href="[field:arcurl/]">[field:title/]</a>
+<p>[field:description function="cn_substr(@me,180)"/]... <font class="lixb">[<a href='[field:arcurl/]'>阅读全文</a>]</font></p>
+</li>
+{/dede:list}
+</ul>
+</div>
+<div class="fenye"><ul class="jogger">{dede:pagelist listitem="info,index,end,pre,next,pageno" listsize="5"/}</ul></div>
+</div>
+<div class="listy">
+<!----广告位250x250---->
+  <img src="{dede:global.cfg_templets_skin/}/images/g2.gif" width="250" height="250" />
+<!----广告位结束---->
+
+
+
+
+<div class="nrmk4">
+<div id="tab1">
+<ul>
+<dl>阅读排行</dl>
+<li onmouseover="setTab(1,0)" class="nob"><a href="#">总</a></li>
+<li onmouseover="setTab(1,1)" class=""><a href="#">月</a></li>
+<li onmouseover="setTab(1,2)" class=""><a href="#">周</a></li>
+</ul>
+</div>
+<div id="tablist1">
+<div class="jtzw " style="display: block;">
+<ul>
+{dede:arclist  row=9 titlelen=31 orderby='click' }
+<li><p>[field:global name=autoindex/]</p><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+<div class="jtzw" style="display: none;">
+<ul>
+{dede:arclist  row=9 titlelen=31 orderby='rand' }
+<li><p>[field:global name=autoindex/]</p><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
+{/dede:arclist}
+</ul></div>
+<div class="jtzw block" style="display: none;">
+<ul>
+{dede:arclist  row=9 titlelen=31 orderby='pubdate' }
+<li><p>[field:global name=autoindex/]</p><a href="[field:arcurl/]" target="_blank">[field:title/]</a></li>
+{/dede:arclist}
+</ul>
+</div>
+</div>
+</div>
+<div class="col2">
+<div id="float">
+			<div><img src="{dede:global.cfg_templets_skin/}/images/g3.gif" width="250" height="250" /></div>
+			
+	  </div>
+	</div>
+    <script src="{dede:global.cfg_templets_skin/}/js/lib.js" type="text/javascript"></script>
+  </div>
+</div>
+{dede:include filename="footer.htm"/}
+</body>
+</html>
